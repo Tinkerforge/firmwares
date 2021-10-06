@@ -57,8 +57,6 @@ def main():
             source = '{0}_{1}_firmware_{2}_{3}_{4}.{5}'.format(category, name, *latest_version, extension)
             target = '{0}_{1}_firmware_latest.{2}'.format(category, name, extension)
 
-            # FIXME: maybe switch to symlink
-            #shutil.copy(os.path.join(root, source), os.path.join(root, target))
             os.remove(os.path.join(root, target))
             os.symlink(source, os.path.join(root, target))
 
