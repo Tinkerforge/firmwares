@@ -23,7 +23,7 @@ def main():
                 path = os.path.join(root, file_)
                 s = os.stat(path)
 
-                if stat.S_IMODE(s.st_mode) != 0o644:
+                if stat.S_IMODE(s.st_mode) != 0o664:
                     print('WARNING: unexpected mode:', path, oct(s.st_mode))
 
                 if re.match(r'^{0}_.*_firmware_latest.z?bin$'.format(category), file_) != None:
