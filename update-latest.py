@@ -57,7 +57,11 @@ def main():
             source = '{0}_{1}_firmware_{2}_{3}_{4}.{5}'.format(category, name, *latest_version, extension)
             target = '{0}_{1}_firmware_latest.{2}'.format(category, name, extension)
 
-            os.remove(os.path.join(root, target))
+            try:
+                os.remove(os.path.join(root, target))
+            except FileNotFoundError:
+                pass
+
             os.symlink(source, os.path.join(root, target))
 
 if __name__ == '__main__':
