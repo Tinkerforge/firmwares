@@ -26,6 +26,9 @@ def main():
                 if (stat.S_IMODE(s.st_mode) & 0o777) not in [0o664, 0o644]:
                     print('WARNING: unexpected mode:', path, oct(s.st_mode))
 
+                if file_ == '.metadata':
+                    continue
+
                 if re.match(r'^{0}_.*_firmware_latest.z?bin$'.format(category), file_) != None:
                     continue
 
